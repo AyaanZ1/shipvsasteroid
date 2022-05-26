@@ -7,7 +7,7 @@ pygame.init()
 class ship(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load('/Users/Nasminkaisar/PycharmProjects/AyaanZ1/Game/image/ship.png')
+        self.image = pygame.image.load('./image/ship.png')
         self.x = 254
         self.y = 286
         self.width,self.height = self.image.get_size()

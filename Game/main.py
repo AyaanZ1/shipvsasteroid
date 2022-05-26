@@ -14,7 +14,7 @@ c = pygame.time.Clock()
 #load the ship object
 ship = ship()
 asteroid = asteroid()
-bg = pygame.image.load('/Users/Nasminkaisar/PycharmProjects/AyaanZ1/Game/image/spacebg.jpeg')
+bg = pygame.image.load('./image/spacebg.jpeg')
 #rescale bg to window size and rescale asteroid
 bg = pygame.transform.scale(bg,(w,h))
 pygame.time.wait(100)

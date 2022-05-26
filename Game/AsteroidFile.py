@@ -5,7 +5,7 @@ pygame.init()
 class asteroid(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load('/Users/Nasminkaisar/PycharmProjects/AyaanZ1/Game/image/asteroid.png')
+        self.image = pygame.image.load('./image/asteroid.png')
         self.x = random.randint(0,1018)
         self.y = random.randint(0,573)
         self.width,self.height = self.image.get_size()
