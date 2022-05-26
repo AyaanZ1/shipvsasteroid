@@ -10,7 +10,8 @@ class asteroid(pygame.sprite.Sprite):
         self.y = random.randint(0,573)
         self.width,self.height = self.image.get_size()
         self.rect = self.image.get_rect()
-        #make the asteroid 1/2 of its size
+        self.mask = pygame.mask.from_surface(self.image)
+        self.image = pygame.transform.scale(self.image,(self.width//2,self.height//2))
 
     def move(self):
         self.x -= 5

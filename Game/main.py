@@ -15,6 +15,7 @@ c = pygame.time.Clock()
 ship = ship()
 asteroid = asteroid()
 bg = pygame.image.load('./image/spacebg.jpeg')
+all_sprites = pygame.sprite.Group(ship,asteroid)
 #rescale bg to window size and rescale asteroid
 bg = pygame.transform.scale(bg,(w,h))
 pygame.time.wait(100)
@@ -38,12 +39,11 @@ while True:
     if ship.y < 0:
         ship.y = 0
     #check for collision with a pygame collision detection function
-    if pygame.sprite.collide_rect(ship, asteroid) and c.get_time() > 1000:
+    if pygame.sprite.collide_mask(ship,asteroid) and c.get_time() > 1000:
         #display game over
-        text = pygame.font.Font('freesansbold.ttf', 32)
-        textSurf = text.render('KO', True, (255,0,0))
-        textRect = textSurf.get_rect()
-        sys.exit()
+       print("Game Over")
+       sys.exit()
+
 
     pygame.display.update()
     c.tick(60)

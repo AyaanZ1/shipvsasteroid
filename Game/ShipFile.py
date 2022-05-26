@@ -12,7 +12,7 @@ class ship(pygame.sprite.Sprite):
         self.y = 286
         self.width,self.height = self.image.get_size()
         self.rect = self.image.get_rect()
-
+        self.mask = pygame.mask.from_surface(self.image)
     def move(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_UP]:
