@@ -1,15 +1,17 @@
 import pygame
 
-from Game.main import window
+
 
 pygame.init()
 
 class ship(pygame.sprite.Sprite):
-    def __init__(self, window):
-        super.__init__()
-        self.image = pygame.image.load('ship.png')
+    def __init__(self):
+        super().__init__()
+        self.image = pygame.image.load('/Users/Nasminkaisar/PycharmProjects/AyaanZ1/Game/image/ship.png')
         self.x = 254
         self.y = 286
+        self.width,self.height = self.image.get_size()
+        self.rect = self.image.get_rect()
 
     def move(self):
         keys = pygame.key.get_pressed()
@@ -18,8 +20,5 @@ class ship(pygame.sprite.Sprite):
         if keys[pygame.K_DOWN]:
             self.y += 10
 
-    def draw(self):
-        window.blit(self.image,(self.x,self.y))
     def update(self):
         self.move()
-        self.draw()
