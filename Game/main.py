@@ -27,6 +27,7 @@ while True:
     #load images and update ship and asteroid
 
     window.blit(bg,(0,0))
+    ship.collision(asteroid)
     ship.update()
     window.blit(ship.image,(ship.x,ship.y))
     window.blit(asteroid.image, (asteroid.x, asteroid.y))
@@ -38,11 +39,7 @@ while True:
         ship.y = h - ship.height
     if ship.y < 0:
         ship.y = 0
-    #check for collision with a pygame collision detection function
-    if pygame.sprite.collide_mask(ship,asteroid) and c.get_time() > 1000:
-        #display game over
-       print("Game Over")
-       sys.exit()
+
 
 
     pygame.display.update()
