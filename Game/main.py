@@ -1,46 +1,47 @@
+"""Main file for asteroid game."""
+from sys import exit as sys_exit
 import pygame
-import sys
-import random
-from ShipFile import ship
-from AsteroidFile import asteroid
-
+from ShipFile import Ship
+from AsteroidFile import Asteroid
 pygame.init()
 
-w = 1018
-h = 573
+size = width, height = 1000, 570
 
-window = pygame.display.set_mode((w,h))
+window = pygame.display.set_mode(size)
 c = pygame.time.Clock()
-#load the ship object
-ship = ship()
-asteroid = asteroid()
+
+# Load the ship object
+ship = Ship()
+
+# Load asteroid
+asteroid = Asteroid()
+
+# Load background
 bg = pygame.image.load('./image/spacebg.jpeg')
-all_sprites = pygame.sprite.Group(ship,asteroid)
-#rescale bg to window size and rescale asteroid
-bg = pygame.transform.scale(bg,(w,h))
-pygame.time.wait(100)
+all_sprites = pygame.sprite.Group(ship, asteroid)
+
+# Rescale bg to window size and rescale asteroid
+bg = pygame.transform.scale(bg, size)
+
 while True:
-    #event loop
+    # Event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            sys.exit()
-    #load images and update ship and asteroid
+            sys_exit()
 
-    window.blit(bg,(0,0))
-    ship.collision(asteroid)
-    ship.update()
-    window.blit(ship.image,(ship.x,ship.y))
-    window.blit(asteroid.image, (asteroid.x, asteroid.y))
+    # Load images and update ship and asteroid
+    window.blit(bg, (0, 0))
+    ship.update(asteroid)
     asteroid.update()
 
-    #check the boundaries
+    ship.draw(window)
+    asteroid.draw(window)
 
-    if ship.y > h - ship.height:
-        ship.y = h - ship.height
+    # Check the boundaries
+    if ship.y > height - ship.height:
+        ship.y = height - ship.height
     if ship.y < 0:
         ship.y = 0
-
-
 
     pygame.display.update()
     c.tick(60)
